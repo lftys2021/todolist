@@ -1,6 +1,6 @@
 package com.example.web;
 
-import com.example.model.TodoEntity;
+import com.example.model.TodoModel;
 import com.example.model.TodoRequest;
 import com.example.service.TodoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,11 +28,11 @@ class TodoControllerTest {
     @MockBean
     TodoService todoservice;
 
-    private TodoEntity expected;
+    private TodoModel expected;
 
     @BeforeEach
     void setup(){
-        this.expected = new TodoEntity();
+        this.expected = new TodoModel();
         this.expected.setId(123L);
         this.expected.setTitle("TEST TITLE");
         this.expected.setOrder(0L);
@@ -43,7 +43,7 @@ class TodoControllerTest {
     void create() throws Exception {
         when(this.todoservice.add(any(TodoRequest.class))).then((i) ->{
             TodoRequest request = i.getArgument(0, TodoRequest.class);
-            return new TodoEntity(this.expected.getId(),
+            return new TodoModel(this.expected.getId(),
                                 request.getTitle(),
                                 this.expected.getOrder(),
                                 this.expected.getCompleted());

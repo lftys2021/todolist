@@ -1,6 +1,5 @@
 package com.example.model;
 
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,11 +14,11 @@ public class TodoResponse {
     private Boolean completed;
     private String url;
 
-    public TodoResponse(TodoEntity todoEntity){
-        this.id = todoEntity.getId();
-        this.title = todoEntity.getTitle();
-        this.order = todoEntity.getOrder();
-        this.completed = todoEntity.getCompleted();
+    public TodoResponse(TodoModel todoModel){
+        this.id = todoModel.getId();
+        this.title = todoModel.getTitle();
+        this.order = todoModel.getOrder();
+        this.completed = todoModel.getCompleted();
         this.url = "http://localhost:8080/" + this.id;
     }
 }
